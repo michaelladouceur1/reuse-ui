@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import SelectionArea from "./lib/components/SelectionArea/SelectionArea";
+import { useTheme } from "./lib/hooks/useTheme";
+import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [theme] = useTheme({
+		backgroundColor: "lightblue",
+	});
+	const [selected, setSelected] = useState("test1");
+	const [selected2, setSelected2] = useState("test2");
+
+	console.log(theme);
+
+	return (
+		<div className="App">
+			<SelectionArea
+				style={theme}
+				selections={["test1", "test2", "test3"]}
+				selected={selected}
+				setSelected={(value) => {
+					console.log(value);
+					setSelected(value);
+				}}
+			/>
+
+			<SelectionArea
+				selections={["test1", "test2", "test3"]}
+				selected={selected2}
+				setSelected={(value) => {
+					console.log(value);
+					setSelected2(value);
+				}}
+			/>
+		</div>
+	);
 }
 
 export default App;
