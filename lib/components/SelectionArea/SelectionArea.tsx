@@ -1,10 +1,9 @@
 import React, { useCallback, useMemo } from "react";
 
-import { SelectionAreaInterface, Selection } from "./SelectionAreaTypes";
 import "./SelectionArea.css";
 
-const SelectionArea: React.FC<SelectionAreaInterface> = (props) => {
-	const selectionName = (selection: Selection) => {
+const SelectionArea: React.FC<SelectionArea> = (props) => {
+	const selectionName = (selection: SelectionItem) => {
 		if (typeof selection === "object") {
 			return selection.name;
 		}
@@ -13,7 +12,7 @@ const SelectionArea: React.FC<SelectionAreaInterface> = (props) => {
 
 	const selectionAreaClass = `reuse-selection-area ${props.className}`;
 	const selectionClass = useCallback(
-		(selection: Selection) => {
+		(selection: SelectionItem) => {
 			if (selection === props.selected) {
 				return "reuse-selection reuse-selected";
 			}
@@ -22,20 +21,21 @@ const SelectionArea: React.FC<SelectionAreaInterface> = (props) => {
 		[props.selected]
 	);
 
-	const handleSelection = (selection: Selection) => {
+	const handleSelection = (selection: SelectionItem) => {
 		if (props.setSelected) {
 			if (typeof selection === "object") {
 				props.setSelected(selection.value);
 			} else {
+				// console.log("selection: ", selection);
 				props.setSelected(selection);
 			}
 		}
 	};
 
 	const selectionElements = useMemo(() => {
-		return props.selections.map((selection: Selection) => {
+		return props.selections.map((selection: SelectionItem, idx: number) => {
 			return (
-				<div className={selectionClass(selection)} onClick={() => handleSelection(selection)}>
+				<div key={idx} className={selectionClass(selection)} onClick={() => handleSelection(selection)}>
 					{selectionName(selection)}
 				</div>
 			);

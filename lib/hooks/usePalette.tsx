@@ -1,17 +1,4 @@
-interface useThemeInterface {
-	backgroundColor?: string;
-	highlightColor1?: string;
-	highlightColor2?: string;
-	highlightColor3?: string;
-	alertColor?: string;
-	borderRadius?: string | 0;
-}
-
-interface useThemeOptionsInterface {
-	exclude?: string[];
-}
-
-const useTheme = (props: useThemeInterface, options?: useThemeOptionsInterface) => {
+const usePalette = (props: usePaletteProps, options?: usePaletteOptions) => {
 	// const selectionAreaTheme = {
 	// 	"selection-area": {
 	// 		"--selection-area-border-radius": "10px",
@@ -38,4 +25,4 @@ const useTheme = (props: useThemeInterface, options?: useThemeOptionsInterface) 
 	];
 };
 
-export { useTheme };
+export { usePalette };

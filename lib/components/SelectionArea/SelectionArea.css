@@ -1,11 +1,14 @@
 :root {
+	--selection-area-background-color: var(--background-color);
+	--selection-area-highlight-color-1: var(--highlight-color-1);
+	--selection-area-highlight-color-2: var(--highlight-color-2);
 	--selection-area-border-radius: var(--border-radius);
 }
 
 .reuse-selection-area {
 	width: 200px;
 	height: 60px;
-	background-color: var(--background-color);
+	background-color: var(--selection-area-background-color);
 	border-radius: var(--selection-area-border-radius);
 	overflow-y: auto;
 }
@@ -27,9 +30,9 @@
 
 .reuse-selection:hover {
 	cursor: pointer;
-	background-color: var(--highlight-color-1);
+	background-color: var(--selection-area-highlight-color-1);
 }
 
 .reuse-selected {
-	background-color: var(--highlight-color-2);
+	background-color: var(--selection-area-highlight-color-2);
 }
