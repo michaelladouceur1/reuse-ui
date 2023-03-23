@@ -1,13 +1,14 @@
 {
 	"name": "reuse-ui",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"main": "src/index.ts",
 	"types": "types/index.d.ts",
 	"scripts": {
 		"start": "react-scripts start",
 		"test": "react-scripts test",
 		"clean": "rm -rf dist",
-		"build": "npm run clean && tsc && cp package.json README.md ./dist"
+		"build": "npm run clean && tsc && cp package.json README.md ./dist",
+		"publish": "npm run build && npm publish ./dist"
 	},
 	"eslintConfig": {
 		"extends": [
