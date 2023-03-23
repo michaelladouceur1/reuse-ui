@@ -1,6 +1,7 @@
 import React from "react";
+import "@testing-library/jest-dom";
 import { render, screen, waitFor } from "@testing-library/react";
-import SelectionArea from "../../lib/components/SelectionArea/SelectionArea";
+import { SelectionArea } from "../lib/components/SelectionArea/SelectionArea";
 
 const STRING_DATA = ["hello", "world"];
 const NUMBER_DATA = [1, 2, 3, 4, 5];
@@ -61,9 +62,6 @@ test("component receives, renders, and selects numbers", async () => {
 	expect(setSelected).toHaveBeenCalledTimes(1);
 	expect(setSelected).toHaveBeenCalledWith(NUMBER_DATA[1]);
 	expect(selected).toBe(NUMBER_DATA[1]);
-
-	// // Check that selected has class "reuse-selection reuse-selected"
-	// expect(nextSelection).toHaveClass("reuse-selection reuse-selected");
 });
 
 // Test SelectionArea receives and renders objects

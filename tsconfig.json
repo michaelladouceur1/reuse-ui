@@ -1,21 +1,42 @@
+// {
+// 	"compilerOptions": {
+// 		"target": "es6",
+// 		"module": "esnext",
+// 		"moduleResolution": "node",
+// 		"lib": ["dom", "dom.iterable", "esnext"],
+// 		"allowJs": true,
+// 		"skipLibCheck": true,
+// 		"esModuleInterop": true,
+// 		"allowSyntheticDefaultImports": true,
+// 		"strict": true,
+// 		"forceConsistentCasingInFileNames": true,
+// 		"noFallthroughCasesInSwitch": true,
+// 		"resolveJsonModule": true,
+// 		"isolatedModules": true,
+// 		"noEmit": true,
+// 		"jsx": "react",
+// 		"typeRoots": ["types"],
+// 		"outDir": "dist"
+// 	},
+// 	"include": ["src", "types"]
+// }
+
 {
 	"compilerOptions": {
-		"target": "es5",
-		"lib": ["dom", "dom.iterable", "esnext"],
-		"allowJs": true,
-		"skipLibCheck": true,
-		"esModuleInterop": true,
-		"allowSyntheticDefaultImports": true,
 		"strict": true,
-		"forceConsistentCasingInFileNames": true,
-		"noFallthroughCasesInSwitch": true,
-		"module": "esnext",
+		"jsx": "react",
+		"declaration": true,
+		"esModuleInterop": true,
+		"outDir": "dist",
+		"target": "es6",
+		"module": "es6",
 		"moduleResolution": "node",
-		"resolveJsonModule": true,
-		"isolatedModules": true,
-		"noEmit": true,
-		"jsx": "react-jsx",
-		"typeRoots": ["types"]
+		"baseUrl": ".",
+		"paths": {
+			"@types": ["types"],
+			"@types/*": ["types/*"]
+		}
 	},
-	"include": ["src", "lib/**/*", "types"]
+	"include": ["src", "types"],
+	"exclude": ["node_modules", "dist", "src/tests"]
 }

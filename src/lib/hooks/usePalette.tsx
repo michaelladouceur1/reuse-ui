@@ -1,3 +1,11 @@
+import { ComponentPalette, Palette } from "@types";
+
+type usePaletteProps = ComponentPalette;
+
+interface usePaletteOptions {
+	exclude?: (keyof Palette)[];
+}
+
 const usePalette = (props: usePaletteProps, options?: usePaletteOptions) => {
 	// const selectionAreaTheme = {
 	// 	"selection-area": {
