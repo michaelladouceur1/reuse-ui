@@ -1,4 +1,4 @@
-import { ComponentPalette, Palette } from "@types";
+import { ComponentPalette, Palette } from "../../../types";
 
 type usePaletteProps = ComponentPalette;
 

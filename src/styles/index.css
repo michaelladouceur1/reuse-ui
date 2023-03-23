@@ -1,0 +1,17 @@
+/*
+COLORS
+#1E8D8B
+#C1F7DC
+#0D3B66
+#DB5461
+#A18276
+
+*/
+
+:root {
+	--background-color: #c3d1d5;
+	--highlight-color-1: #1e8d8b;
+	--highlight-color-2: #c1f7dc;
+	--highlight-color-3: #0d3b66;
+	--alert-color: #db5461;
+}
