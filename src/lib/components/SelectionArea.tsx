@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from "react";
 
-import "./SelectionArea.css";
+import "@styles/SelectionArea.css";
 
 /**
  * SelectionArea component

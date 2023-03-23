@@ -1,1 +1,1 @@
-export { SelectionArea } from "./lib/components/SelectionArea/SelectionArea";
+export { SelectionArea } from "./lib/components/SelectionArea";

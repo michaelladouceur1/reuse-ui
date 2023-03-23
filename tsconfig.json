@@ -11,9 +11,13 @@
 		"baseUrl": ".",
 		"paths": {
 			"@types": ["types"],
-			"@types/*": ["types/*"]
+			"@types/*": ["types/*"],
+			"@lib": ["src/lib"],
+			"@lib/*": ["src/lib/*"],
+			"@styles": ["src/styles"],
+			"@styles/*": ["src/styles/*"]
 		}
 	},
-	"include": ["src", "types"],
+	"include": ["src/**/*", "types"],
 	"exclude": ["node_modules", "dist", "src/tests"]
 }
