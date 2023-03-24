@@ -1,4 +1,5 @@
 import { ComponentPalette, Palette } from "../../../types";
+import { PaletteNames, Palettes } from "../../styles/styles";
 
 type usePaletteProps = ComponentPalette;
 
@@ -6,7 +7,31 @@ interface usePaletteOptions {
 	exclude?: (keyof Palette)[];
 }
 
-const usePalette = (props: usePaletteProps, options?: usePaletteOptions) => {
+/**
+ * usePalette hook - returns a CSSProperties object for use in a style prop
+ * @example
+ * const [palette] = usePalette("STEEL");
+ * <div style={palette} />
+ */
+function usePalette(props: PaletteNames, options?: usePaletteOptions): [React.CSSProperties];
+/**
+ * usePalette hook - returns a CSSProperties object for use in a style prop
+ * @example
+ * const [palette] = usePalette({
+ * 	backgroundColor: "red",
+ * 	highlightColor1: "blue",
+ * 	highlightColor3: "green",
+ * });
+ * <div style={palette} />
+ */
+function usePalette(props: usePaletteProps, options?: usePaletteOptions): [React.CSSProperties];
+/**
+ *
+ * @param props
+ * @param options
+ * @returns
+ */
+function usePalette(props: any, options?: any): [React.CSSProperties] {
 	// const selectionAreaTheme = {
 	// 	"selection-area": {
 	// 		"--selection-area-border-radius": "10px",
@@ -21,6 +46,10 @@ const usePalette = (props: usePaletteProps, options?: usePaletteOptions) => {
 	// 	}
 	// }
 
+	if (typeof props === "string") {
+		props = Palettes[props as PaletteNames];
+	}
+
 	return [
 		{
 			"--background-color": props.backgroundColor || "",
@@ -31,6 +60,6 @@ const usePalette = (props: usePaletteProps, options?: usePaletteOptions) => {
 			"--border-radius": props.borderRadius || 0,
 		} as React.CSSProperties,
 	];
-};
+}
 
 export { usePalette };

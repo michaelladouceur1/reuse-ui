@@ -1,6 +1,9 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useEffect, useState, useCallback, useMemo, CSSProperties } from "react";
 
-// import "../../styles/SelectionArea.css";
+import { usePalette } from "../hooks/usePalette";
+
+import styles from "../../styles/SelectionArea.module.css";
+import { useDefaultPalette } from "../hooks/useDefaultPalette";
 
 /**
  * SelectionArea component
@@ -51,7 +54,7 @@ interface SelectionArea {
 	/**
 	 * Selection area style
 	 */
-	style?: object;
+	style?: CSSProperties;
 }
 
 /**
@@ -60,7 +63,9 @@ interface SelectionArea {
  */
 type SelectionItem = string | number | { name: string; value: any };
 
-const SelectionArea: React.FC<SelectionArea> = (props) => {
+function SelectionArea(props: SelectionArea) {
+	const [palette] = useDefaultPalette(props.style);
+
 	const selectionName = (selection: SelectionItem) => {
 		if (typeof selection === "object") {
 			return selection.name;
@@ -68,13 +73,13 @@ const SelectionArea: React.FC<SelectionArea> = (props) => {
 		return selection;
 	};
 
-	const selectionAreaClass = `reuse-selection-area ${props.className}`;
+	const selectionAreaClass = `${styles.reuseSelectionArea} ${props.className}`;
 	const selectionClass = useCallback(
 		(selection: SelectionItem) => {
 			if (selection === props.selected) {
-				return "reuse-selection reuse-selected";
+				return styles.reuseSelection + " " + styles.reuseSelected;
 			}
-			return "reuse-selection";
+			return styles.reuseSelection;
 		},
 		[props.selected]
 	);
@@ -101,10 +106,10 @@ const SelectionArea: React.FC<SelectionArea> = (props) => {
 	}, [props.selections]);
 
 	return (
-		<div id={props.id} className={selectionAreaClass} style={props.style}>
-			<div className="reuse-selections">{selectionElements}</div>
+		<div id={props.id} className={selectionAreaClass} style={palette}>
+			<div className={styles.reuseSelections}>{selectionElements}</div>
 		</div>
 	);
-};
+}
 
 export { SelectionArea };

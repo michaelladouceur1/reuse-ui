@@ -1,18 +1,20 @@
 {
 	"compilerOptions": {
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"target": "es6",
 		"strict": true,
 		"jsx": "react",
 		"declaration": true,
 		"esModuleInterop": true,
 		"outDir": "dist",
-		"target": "es6",
-		"module": "commonjs",
-		"moduleResolution": "node",
 		"baseUrl": ".",
 		"paths": {
-			"@types": ["types"],
-			"@types/*": ["types/*"]
-		}
+			"@/*": ["./*"],
+			"@lib/*": ["./src/lib/*"],
+			"@styles/*": ["./src/styles/*"]
+		},
+		"plugins": [{ "name": "typescript-plugin-css-modules" }]
 	},
 	"include": ["src/**/*", "types", "index.ts"],
 	"exclude": ["node_modules", "dist", "src/tests"]
