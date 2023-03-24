@@ -17,20 +17,10 @@ function usePalette(props: PaletteNames, options?: usePaletteOptions): [React.CS
 /**
  * usePalette hook - returns a CSSProperties object for use in a style prop
  * @example
- * const [palette] = usePalette({
- * 	backgroundColor: "red",
- * 	highlightColor1: "blue",
- * 	highlightColor3: "green",
- * });
+ * const [palette] = usePalette({ backgroundColor: "red", highlightColor1: "blue", highlightColor3: "green", ... });
  * <div style={palette} />
  */
 function usePalette(props: usePaletteProps, options?: usePaletteOptions): [React.CSSProperties];
-/**
- *
- * @param props
- * @param options
- * @returns
- */
 function usePalette(props: any, options?: any): [React.CSSProperties] {
 	// const selectionAreaTheme = {
 	// 	"selection-area": {
