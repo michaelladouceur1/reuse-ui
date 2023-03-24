@@ -77,7 +77,7 @@ function SelectionArea(props: SelectionArea) {
 	const selectionClass = useCallback(
 		(selection: SelectionItem) => {
 			if (selection === props.selected) {
-				return styles.reuseSelection + " " + styles.reuseSelected;
+				return `${styles.reuseSelection} ${styles.reuseSelected}`;
 			}
 			return styles.reuseSelection;
 		},
@@ -89,7 +89,6 @@ function SelectionArea(props: SelectionArea) {
 			if (typeof selection === "object") {
 				props.setSelected(selection.value);
 			} else {
-				// console.log("selection: ", selection);
 				props.setSelected(selection);
 			}
 		}
