@@ -7,7 +7,7 @@
 		"test": "react-scripts test",
 		"clean": "rm -rf dist",
 		"build": "tsc && cp package.json README.md ./dist && cp -r ./src/styles ./dist/src",
-		"npm-publish": "npm run clean && npm run build && npm publish ./dist"
+		"publish": "npm run clean && npm run build && npm publish ./dist"
 	},
 	"eslintConfig": {
 		"extends": [
