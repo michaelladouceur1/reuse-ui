@@ -3,10 +3,10 @@
 	"version": "0.1.6",
 	"scripts": {
 		"start": "react-scripts start",
+		"dev": "npm run clean && nodemon",
 		"test": "react-scripts test",
-		"dev": "npm run build && tsc -w",
 		"clean": "rm -rf dist",
-		"build": "npm run clean && tsc && cp package.json README.md ./dist && cp -r ./src/styles ./dist/src",
+		"build": "tsc && cp package.json README.md ./dist && cp -r ./src/styles ./dist/src",
 		"npm-publish": "npm run build && npm publish ./dist"
 	},
 	"eslintConfig": {
@@ -41,9 +41,11 @@
 		"css-loader": "^6.7.3",
 		"jest": "^29.5.0",
 		"jest-dom": "^4.0.0",
+		"nodemon": "^2.0.22",
 		"style-loader": "^3.3.2",
 		"ts-jest": "^29.0.5",
 		"ts-loader": "^9.4.2",
+		"ts-node": "^10.9.1",
 		"typescript": "^5.0.2",
 		"typescript-plugin-css-modules": "^5.0.0",
 		"webpack": "^5.76.3",

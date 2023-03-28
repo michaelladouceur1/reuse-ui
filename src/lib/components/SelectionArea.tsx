@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useCallback, useMemo, CSSProperties } from "react";
 
-import { usePalette } from "../hooks/usePalette";
-
-import styles from "../../styles/SelectionArea.module.css";
+import GlobalStyles from "../../styles/_global.module.css";
+import SelectionAreaStyles from "../../styles/SelectionArea.module.css";
 import { useDefaultPalette } from "../hooks/useDefaultPalette";
 
 /**
@@ -36,13 +35,28 @@ interface SelectionArea {
 	 */
 	setSelected: (value: any) => void;
 	/**
+	 * Dimension for selection area
+	 */
+	dimension?: {
+		/**
+		 * Width for selection area
+		 * @type {string}
+		 */
+		width?: string;
+		/**
+		 * Height for selection area
+		 * @type {string}
+		 */
+		height?: string;
+	};
+	/**
 	 * Flag for whether to filter selections for unique values
 	 */
-	unique?: boolean;
+	// unique?: boolean;
 	/**
 	 * Flag for making selection area searchable
 	 */
-	search?: boolean;
+	// search?: boolean;
 	/**
 	 * Selection area id
 	 */
@@ -66,6 +80,9 @@ type SelectionItem = string | number | { name: string; value: any };
 function SelectionArea(props: SelectionArea) {
 	const [palette] = useDefaultPalette(props.style);
 
+	palette.width = props.dimension?.width || "400px";
+	palette.height = props.dimension?.height || "200px";
+
 	const selectionName = (selection: SelectionItem) => {
 		if (typeof selection === "object") {
 			return selection.name;
@@ -73,13 +90,13 @@ function SelectionArea(props: SelectionArea) {
 		return selection;
 	};
 
-	const selectionAreaClass = `${styles.reuseSelectionArea} ${props.className}`;
+	const selectionAreaClass = `${GlobalStyles.global} ${SelectionAreaStyles.reuseSelectionArea} ${props.className}`;
 	const selectionClass = useCallback(
 		(selection: SelectionItem) => {
 			if (selection === props.selected) {
-				return `${styles.reuseSelection} ${styles.reuseSelected}`;
+				return `${SelectionAreaStyles.reuseSelection} ${SelectionAreaStyles.reuseSelected}`;
 			}
-			return styles.reuseSelection;
+			return SelectionAreaStyles.reuseSelection;
 		},
 		[props.selected]
 	);
@@ -106,7 +123,7 @@ function SelectionArea(props: SelectionArea) {
 
 	return (
 		<div id={props.id} className={selectionAreaClass} style={palette}>
-			<div className={styles.reuseSelections}>{selectionElements}</div>
+			<div className={SelectionAreaStyles.reuseSelections}>{selectionElements}</div>
 		</div>
 	);
 }
