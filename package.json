@@ -1,14 +1,13 @@
 {
 	"name": "reuse-ui",
-	"version": "0.1.8",
+	"version": "0.1.9",
 	"scripts": {
 		"start": "react-scripts start",
 		"dev": "npm run clean && nodemon",
 		"test": "react-scripts test",
 		"clean": "rm -rf dist",
 		"build": "tsc && cp package.json README.md ./dist && cp -r ./src/styles ./dist/src",
-		"npm-publish": "echo 'version: ' && read version && npm version $version && npm run clean && npm run build && npm publish ./dist",
-		"version": "echo 'version: ' && read version && npm version $version"
+		"npm-publish": "npm run clean && npm run build && npm publish ./dist"
 	},
 	"eslintConfig": {
 		"extends": [
