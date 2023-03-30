@@ -4,13 +4,9 @@ A collection of reusable React components
 
 ## Index
 
----
-
 - [Selection Area](#selection-area)
 
 ## Installation
-
----
 
 Install Reuse UI from npm
 
@@ -27,8 +23,6 @@ yarn add reuse-ui
 ```
 
 ## Usage
-
----
 
 ## Selection Area
 
