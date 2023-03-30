@@ -2,6 +2,10 @@
 	"name": "reuse-ui",
 	"version": "0.1.10",
 	"types": "dist/types/index.d.ts",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/michaelladouceur1/reuse-ui.git"
+	},
 	"scripts": {
 		"start": "react-scripts start",
 		"dev": "npm run clean && nodemon",
