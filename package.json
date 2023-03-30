@@ -1,6 +1,6 @@
 {
 	"name": "reuse-ui",
-	"version": "0.1.9",
+	"version": "0.1.10",
 	"types": "dist/types/index.d.ts",
 	"scripts": {
 		"start": "react-scripts start",
