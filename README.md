@@ -24,7 +24,7 @@ yarn add reuse-ui
 
 ## Usage
 
-## Selection Area
+### [**Selection Area**](./src/lib/components/SelectionArea.tsx "SelectionArea.tsx")
 
 The `<SelectionArea />` component is a component for displaying selectable list items. The list items can be an array of the following types:
 
@@ -32,7 +32,7 @@ The `<SelectionArea />` component is a component for displaying selectable list 
 - `number`
 - `{name: string, value: any}`
 
-### <b>Example #1</b>
+### **Example #1**
 
 ```js
 import { useState } from "react";
@@ -44,7 +44,7 @@ function App() {
 }
 ```
 
-### <b>Example #2</b>
+### **Example #2**
 
 ```js
 import { useEffect, useState } from "react";
@@ -85,7 +85,7 @@ function App() {
 }
 ```
 
-### <b>Selection Area Arguments</b>
+### **Selection Area Arguments**
 
 | Argument      | Description                                                                                |
 | ------------- | ------------------------------------------------------------------------------------------ |
