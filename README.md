@@ -1,46 +1,101 @@
-# Getting Started with Create React App
+# Reuse UI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A collection of reusable React components
 
-## Available Scripts
+## Index
 
-In the project directory, you can run:
+---
 
-### `yarn start`
+- [Selection Area](#selection-area)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Installation
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `yarn test`
+Install Reuse UI from npm
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Using npm:
 
-### `yarn build`
+```sh
+npm install reuse-ui
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Using yarn:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```sh
+yarn add reuse-ui
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
 
-### `yarn eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Selection Area
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The `<SelectionArea />` component is a component for displaying selectable list items. The list items can be an array of the following types:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- `string`
+- `number`
+- `{name: string, value: any}`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### <b>Example #1</b>
 
-## Learn More
+```js
+import { useState } from "react";
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+function App() {
+	const selections = ["Michael", "Ashley", "Christopher", "Jessica"];
+	const [selected, setSelected] = useState(selections[0]);
+	return <SelectionArea selections={SELECTIONS} selected={selected} setSelected={setSelected} />;
+}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### <b>Example #2</b>
+
+```js
+import { useEffect, useState } from "react";
+
+const URL = "https://jsonplaceholder.typicode.com/users";
+
+function App() {
+	const [selections, setSelections] = useState([]);
+	const [selected, setSelected] = useState("");
+
+	useEffect(() => {
+		fetch(URL)
+			.then((res) => res.json())
+			.then((data) => {
+				const users = data.map((user) => ({
+					name: user.name,
+					value: { id: user.id, name: user.name, email: user.email },
+				}));
+				setSelections(users);
+				setSelected(users[0]);
+			});
+	}, []);
+
+	const updateSelected = async (newSelected) => {
+		fetch(URL, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ user: newSelected.value }),
+			mode: "cors",
+		});
+
+		setSelected(newSelected);
+	};
+
+	return <SelectionArea selections={selections} selected={selected} setSelected={updateSelected} />;
+}
+```
+
+### <b>Selection Area Arguments</b>
+
+| Argument      | Description                                                                                |
+| ------------- | ------------------------------------------------------------------------------------------ |
+| `selections`  | Array of list items to display (`string[]`, `number[]`, or `{name: string, value: any}[]`) |
+| `selected`    | Selected value                                                                             |
+| `setSelected` | Function for setting value of selected and performing other actions                        |
+| `dimension`   | Object to set `width` and `height` of Selection Area (`{width: string, height: string}`)   |
