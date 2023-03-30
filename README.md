@@ -93,3 +93,6 @@ function App() {
 | `selected`    | Selected value                                                                             |
 | `setSelected` | Function for setting value of selected and performing other actions                        |
 | `dimension`   | Object to set `width` and `height` of Selection Area (`{width: string, height: string}`)   |
+| `id`          | Set ID of Selection Area                                                                   |
+| `className`   | Set classes of Selection Area                                                              |
+| `style`       | CSS style to apply to Selection Area                                                       |
