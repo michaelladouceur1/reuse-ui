@@ -96,3 +96,11 @@ function App() {
 | `id`          | Set ID of Selection Area                                                                   |
 | `className`   | Set classes of Selection Area                                                              |
 | `style`       | CSS style to apply to Selection Area                                                       |
+
+## Todo
+
+- [x] Selection Area
+- [ ] Modal
+- [ ] Button
+- [ ] Slider
+- [ ] Toggle
